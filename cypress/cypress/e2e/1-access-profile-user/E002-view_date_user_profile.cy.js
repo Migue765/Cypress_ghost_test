@@ -1,7 +1,7 @@
 describe('Access profile: view date user profile ', () => {
 
     const LOCAL_HOST = Cypress.env('LOCAL_HOST');
-    const SCREENSHOT_PATH = '../screenshots (ghost_4.5)/E002-view_date_user_profile_before/view_date_user_profile';
+    const SCREENSHOT_PATH = 'E002-view_date_user_profile_before/view_date_user_profile';
     let screenshotCounter = 1;
     const NAME = Cypress.env('NAME');
 
@@ -11,7 +11,7 @@ describe('Access profile: view date user profile ', () => {
     }
 
     beforeEach("Precondition: Admin login", () => {
-        cy.LoginGhost4();
+        cy.LoginGhost();
     });
 
     // Handle uncaught exceptions
@@ -30,12 +30,21 @@ describe('Access profile: view date user profile ', () => {
         cy.get('div.gh-user-avatar.relative').click();
         takeScreenshot();
         cy.get('.dropdown-menu.dropdown-triangle-top').should('be.visible');
-        cy.get('a[href="#/staff/jaime-larson/"]').click();
+        cy.get('a[data-test-nav="user-profile"').click();
         takeScreenshot();
-        cy.get('header.gh-canvas-header-content h2.gh-canvas-title').contains('Jaime Larson').should('exist');
+        cy.url().should('include', '/ghost/#/settings/staff/jaime');
         takeScreenshot();
+        cy.get('input[class*="peer z-[1]"]').should('exist').should('be.visible').invoke('val')
+            .then((actualValue) => {
+                if (actualValue !== NAME) {
+                    throw new Error(`El valor del campo es "${actualValue}", pero se esperaba "${NAME}".`);
+                }
+                cy.log(`El valor del campo es correcto: ${actualValue}`);
+            });
 
     });
+
+
 
 
 });
