@@ -87,5 +87,5 @@ Asegúrate de tener instalado Ghost en la versión 5.1.0 en tu entorno local.
 
 
 # Cypress test 120 :)
-Click aquí para ser dirigido a la Wiki con la descripicón de las purebas realizadas
+Click aquí para ser dirigido a la Wiki con la descripción de las pruebas realizadas.
 
