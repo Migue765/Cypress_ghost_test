@@ -11,7 +11,15 @@ Este documento proporciona instrucciones para configurar y ejecutar pruebas util
 
 ## Requisitos Previos
 
-Asegúrate de tener instalado Ghost en la versión 5.1.0 en tu entorno local.
+- Se recomienda usar Node.js versión 12.10.0. Ejecuta estos comandos:
+
+```bash
+nvm install 12.22.1    # Instala Node.js 12.22.1
+nvm use 12.22.1        # Usa la versión instalada
+node -v                # Verifica que la versión de Node.js sea correcta
+```
+
+- Asegúrate de tener instalado Ghost en la versión 5.1.0 en tu entorno local.
 <details>
 <summary>Instalación de Ghost 5.1.0</summary>
 
@@ -58,7 +66,6 @@ Asegúrate de tener instalado Ghost en la versión 5.1.0 en tu entorno local.
    Usa `ghost stop` para detener Ghost y `ghost start` para reiniciarlo cuando sea necesario.
 
 </details>
-
 
 ## Pasos para Configurar Cypress
 
