@@ -73,7 +73,10 @@ Asegúrate de tener instalado Ghost en la versión 5.1.0 en tu entorno local.
    Asegúrate de que tu instancia de Ghost v5.1.0 esté ejecutándose localmente.
 
 2. **Modificar el Host de Cypress**  
-   Abre el archivo `cypress/cypress.config.js` y modifica el puerto si es necesario para que coincida con el de tu entorno de Ghost.
+   Abre el archivo `cypress/cypress.config.js` y modifica el puerto si es necesario para que coincida con el de tu entorno de Ghost, para que quede por ejemplo de la siguiente forma
+   ```bash
+   LOCAL_HOST: "http://localhost:2369/ghost/"
+   ```
 
 3. **Instalar Dependencias de Cypress**  
    Una vez importado este repositorio navega a la carpeta de Cypress ejecutando los siguiente comandos en la terminal para instalar las dependencias y ejecutar el entorno en local:
