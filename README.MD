@@ -11,7 +11,7 @@ Este documento proporciona instrucciones para configurar y ejecutar pruebas util
 
 ## Requisitos Previos
 
-- Se recomienda usar Node.js versión 12.10.0. Ejecuta estos comandos:
+Se recomienda usar Node.js versión 12.10.0. Ejecuta estos comandos:
 
 ```bash
 nvm install 12.22.1    # Instala Node.js 12.22.1
@@ -19,7 +19,7 @@ nvm use 12.22.1        # Usa la versión instalada
 node -v                # Verifica que la versión de Node.js sea correcta
 ```
 
-- Asegúrate de tener instalado Ghost en la versión 5.1.0 en tu entorno local.
+Asegúrate de tener instalado Ghost en la versión 5.1.0 en tu entorno local.
 <details>
 <summary>Instalación de Ghost 5.1.0</summary>
 
