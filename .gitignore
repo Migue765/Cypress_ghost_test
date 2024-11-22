@@ -1,3 +1,4 @@
 /node_modules
 **/node_modules
-*/reports
+/reports
+package-lock.json
