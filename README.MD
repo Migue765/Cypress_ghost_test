@@ -3,3 +3,4 @@
 2. modifique el puerto en el archivo cypress/cyprees/cypress.config.js
 3. ingrese a la carpeta cypress y haga un npm i para instalar las dependencias
 4. en a la carpeta /Cypress_ghost_test/cypress/ ejecute en la terminal cypress open
+    Si no ve las carpetas ya configuradas seleccione la carpeta en add project 
