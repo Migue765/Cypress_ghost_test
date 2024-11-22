@@ -1,13 +1,13 @@
 # Cypress Test 120
 
+Este documento proporciona instrucciones para configurar y ejecutar pruebas utilizando Cypress en un entorno de Ghost versión 5.1.0.
+
 ## Integrantes
 * [Natalia Arango](mailto:a.arandio@uniandes.edu.co)
 * [Jazmín Cordoba](mailto:jn.cordobap1@uniandes.edu.co)
 * [Miguel Gómez](mailto:ma.gomeza1@uniandes.edu.co)
 * [Juan Mejía](mailto:je.mejiai1@uniandes.edu.co)
 
-
-Este documento proporciona instrucciones para configurar y ejecutar pruebas utilizando Cypress en un entorno de Ghost versión 5.1.0.
 
 ## Requisitos Previos
 
@@ -69,7 +69,7 @@ Asegúrate de tener instalado Ghost en la versión 5.1.0 en tu entorno local.
    Abre el archivo `cypress/cypress.config.js` y modifica el puerto si es necesario para que coincida con el de tu entorno de Ghost.
 
 3. **Instalar Dependencias de Cypress**  
-   Navega a la carpeta de Cypress y ejecuta el siguiente comando en la terminal para instalar las dependencias:
+   Una vez importado este repositorio navega a la carpeta de Cypress ejecutando los siguiente comandos en la terminal para instalar las dependencias y ejecutar el entorno en local:
    ```bash
    cd cypress
    npm install
@@ -77,5 +77,5 @@ Asegúrate de tener instalado Ghost en la versión 5.1.0 en tu entorno local.
 
 
 # Cypress test 120 :)
-
+Click aquí para ser dirigido a la Wiki con la descripicón de las purebas realizadas
 
