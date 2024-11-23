@@ -134,3 +134,25 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     // Return false to prevent Cypress from failing the test
     return false;
 });
+
+Cypress.Commands.add('enableAllNewsletterDesignOptions', () => {
+    cy.visit(Cypress.env('LOCAL_HOST') + "#/settings");
+    cy.get('a#newsletters').click();
+    cy.get('div.grow.py-2').first().click();
+    cy.get('button#design').click();
+
+    cy.get('button[role="switch"]').then(($buttons) => {
+        Cypress._.each(Cypress._.reverse($buttons), ($el) => {
+            const isPostTitleButton = $el.id === ':r2j:';
+
+            if (!isPostTitleButton && ($el.getAttribute('aria-checked') === 'false' || $el.getAttribute('data-state') === 'unchecked')) {
+                cy.wrap($el).click({force: true}).then(() => {
+                    cy.wrap($el).should('have.attr', 'aria-checked', 'true');
+                    cy.wrap($el).should('have.attr', 'data-state', 'checked');
+                });
+            }
+        });
+    });
+    cy.visit(Cypress.env('LOCAL_HOST') + "#/dashboard");
+});
+
