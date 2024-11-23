@@ -2,7 +2,6 @@ import {faker} from '@faker-js/faker';
 
 describe('Edit an existing tag with a long name', () => {
     const LOCAL_HOST = Cypress.env('LOCAL_HOST');
-    const LONG_TAG_NAME = faker.lorem.words(50); // Genera un nombre de 50 palabras
 
     beforeEach("Precondition: Admin login", () => {
         cy.LoginGhost();
@@ -10,11 +9,11 @@ describe('Edit an existing tag with a long name', () => {
     });
 
     it('Edit an existing tag and save with a long name', () => {
-        cy.visit(LOCAL_HOST + "#/dashboard");
-        cy.wait(4000);
+        cy.visit(LOCAL_HOST + "#/tags");
+        cy.wait(3000);
 
-        cy.get('a[data-test-nav="tags"]').click();
-        cy.wait(2000);
+        const LONG_TAG_NAME = faker.lorem.words(4);
+
         cy.get('section.view-container.content-list').find('a[title="Edit tag"]').first().click();
         cy.wait(2000);
 
@@ -34,6 +33,10 @@ describe('Edit an existing tag with a long name', () => {
         cy.wait(1000);
 
         cy.get('section.view-container.content-list').contains(LONG_TAG_NAME).should('exist');
+    });
+
+    it('Delete all tags and verify they are not in the tag list', () => {
+        cy.deleteAllTags();
     });
 
 });

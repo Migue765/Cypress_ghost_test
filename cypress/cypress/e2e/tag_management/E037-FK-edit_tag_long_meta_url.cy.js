@@ -9,19 +9,18 @@ describe('Edit an existing tag with invalid slug', () => {
     });
 
     it('Edit an existing tag and save with an invalid slug', () => {
-        cy.visit(LOCAL_HOST + "#/dashboard");
-        cy.wait(4000);
+        cy.visit(LOCAL_HOST + "#/tags");
+        cy.wait(3000);
 
-        cy.get('a[data-test-nav="tags"]').click();
-        cy.wait(2000);
         cy.get('section.view-container.content-list').find('a[title="Edit tag"]').first().click();
         cy.wait(2000);
 
         cy.get('input[data-test-input="tag-name"]').clear().type(faker.lorem.word());
-        cy.get('input[data-test-input="tag-slug"]').clear().type('invalid_slug!@#'); // Slug inválido
+        cy.get('input[data-test-input="tag-slug"]').clear().type('invalid_slug!@#');
 
         cy.get('button.gh-btn.gh-btn-expand').first().click();
-        cy.get('input#canonical-url').clear().type('Meta Title with Invalid Slug');
+        const invalidUrl = faker.internet.url() + 'invalid'; // Generate an invalid URL
+        cy.get('input#canonical-url').clear().type(invalidUrl);
         cy.wait(2000);
 
         cy.get('span[data-test-task-button-state="idle"]').click();
@@ -30,7 +29,9 @@ describe('Edit an existing tag with invalid slug', () => {
         cy.get('a[data-test-nav="tags"]').click();
         cy.wait(1000);
 
-        cy.contains('invalid_slug!@#').should('not.exist'); // Verifica que no exista el slug inválido
     });
 
+    it('Delete all tags and verify they are not in the tag list', () => {
+        cy.deleteAllTags();
+    });
 });

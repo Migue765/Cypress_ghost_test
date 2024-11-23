@@ -11,11 +11,9 @@ describe('Edit an existing tag with a long meta title', () => {
     });
 
     it('Edit an existing tag and save with a long meta title', () => {
-        cy.visit(LOCAL_HOST + "#/dashboard");
-        cy.wait(4000);
+        cy.visit(LOCAL_HOST + "#/tags");
+        cy.wait(3000);
 
-        cy.get('a[data-test-nav="tags"]').click();
-        cy.wait(2000);
         cy.get('section.view-container.content-list').find('a[title="Edit tag"]').first().click();
         cy.wait(2000);
 

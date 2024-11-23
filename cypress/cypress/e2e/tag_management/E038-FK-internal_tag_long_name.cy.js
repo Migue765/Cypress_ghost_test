@@ -8,16 +8,12 @@ describe('Create a new tag with long name', () => {
     });
 
     it('Create a new internal tag with a long name', () => {
-        cy.visit(LOCAL_HOST + "#/dashboard");
+        cy.visit(LOCAL_HOST + "#/tags/new");
         cy.wait(3000);
 
         // Generación de un nombre muy largo que empieza con #
         const longTagName = `#${faker.lorem.words(50)}`; // Agrega un # al inicio con 50 palabras
 
-        cy.get('a[data-test-nav="tags"]').click();
-        cy.wait(1000);
-        cy.get('a[href="#/tags/new/"].gh-btn.gh-btn-primary').click();
-        cy.wait(1000);
         cy.get('input[data-test-input="tag-name"]').type(longTagName);
         cy.get('input[data-test-input="accentColor"]').type(faker.internet.color().substring(1));
         cy.get('textarea[data-test-input="tag-description"]').type(faker.lorem.text());
@@ -25,10 +21,9 @@ describe('Create a new tag with long name', () => {
         cy.get('span[data-test-task-button-state="idle"]').click();
         cy.wait(2000);
 
-        // Verificación de la existencia de la etiqueta creada
-        cy.get('a[data-test-nav="tags"]').click();
-        cy.wait(3000);
-        cy.contains(longTagName).should('exist');
+        // Verificación la existencia de aviso por nombre demasiado largo
+        cy.get('.mr2 > .error > :nth-child(1)').should('contain.text',
+            'Tag names cannot be longer than');
     });
 
     it('Delete all tags and verify they are not in the tag list', () => {
