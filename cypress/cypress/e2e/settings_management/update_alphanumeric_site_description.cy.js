@@ -21,9 +21,11 @@ describe('Modify Site Name', () => {
         // Scenarios with Faker.js
         const scenarios = [
             {
-                description: 'Title too long',
-                data: faker.string.alpha({ length: 300 }), 
-                valid: false,
+                description: 'Alphanumeric desctiption',
+                data: Array.from({ length: 15 }, () =>
+                    faker.string.alphanumeric()
+                ).join(''),
+                valid: true,
             },
         ];
 

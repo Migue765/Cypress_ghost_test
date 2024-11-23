@@ -19,7 +19,7 @@ describe('Modify Site Name', () => {
         cy.visit(LOCAL_HOST + "#/settings");
 
         const scenarios = [
-            { description: 'Numeric title', data: faker.number.int({ min: 10, max: 100 }).toString(), valid: true },
+            { description: 'Numeric description', data: faker.number.int({ min: 10, max: 100 }).toString(), valid: true },
         ];
 
         scenarios.forEach((scenario, index) => {
