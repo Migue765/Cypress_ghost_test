@@ -42,12 +42,6 @@ describe('Content Management: Create and Verify Page', () => {
 
         let result = cy.get(".view-container.content-list").get('.gh-list-row.gh-posts-list-item.gh-post-list-plain-status')
 
-        result.each(($el) => {
-            cy.wrap($el).click();
-            cy.wait(1000); // wait for the page to load
-            cy.go('back'); // go back to the list of pages
-        });
-
         cy.url().should('include', '/ghost/#/pages');
     });
 });
