@@ -25,6 +25,25 @@ Cypress.Commands.add('LoginGhost', () => {
     });
 });
 
+Cypress.Commands.add('deleteAllTags', () => {
+    const LOCAL_HOST = Cypress.env('LOCAL_HOST');
+
+    function deleteTagIfExists() {
+        cy.get('section.view-container.content-list').then($section => {
+            if ($section.find('a[title="Edit tag"]').length > 0) {
+                cy.get('a[title="Edit tag"]').first().click();
+                cy.get('button.gh-btn.gh-btn-red.gh-btn-icon[data-test-button="delete-tag"]').click();
+                cy.get('div.modal-content[data-test-modal="confirm-delete-tag"]').contains('Delete').click();
+                deleteTagIfExists();
+            }
+        });
+    }
+
+    cy.visit(LOCAL_HOST + "#/tags");
+    cy.wait(1000);
+    deleteTagIfExists();
+});
+
 Cypress.Commands.add('LoginGhost4', () => {
     cy.session("Login", () => {
         cy.visit(Cypress.env('LOCAL_HOST'));
