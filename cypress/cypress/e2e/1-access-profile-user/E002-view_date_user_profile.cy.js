@@ -41,10 +41,5 @@ describe('Access profile: view date user profile ', () => {
                 }
                 cy.log(`El valor del campo es correcto: ${actualValue}`);
             });
-
     });
-
-
-
-
 });

@@ -1,3 +1,4 @@
+import 'cypress-file-upload';
 Cypress.Commands.add('LoginGhost', () => {
     cy.session("Login", () => {
         cy.visit(Cypress.env('LOCAL_HOST'));
