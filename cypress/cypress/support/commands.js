@@ -1,3 +1,4 @@
+import 'cypress-file-upload';
 Cypress.Commands.add('LoginGhost', () => {
     cy.session("Login", () => {
         cy.visit(Cypress.env('LOCAL_HOST'));
@@ -23,6 +24,25 @@ Cypress.Commands.add('LoginGhost', () => {
         });
         cy.url().should('include', '/ghost/#/dashboard');
     });
+});
+
+Cypress.Commands.add('deleteAllTags', () => {
+    const LOCAL_HOST = Cypress.env('LOCAL_HOST');
+
+    function deleteTagIfExists() {
+        cy.get('section.view-container.content-list').then($section => {
+            if ($section.find('a[title="Edit tag"]').length > 0) {
+                cy.get('a[title="Edit tag"]').first().click();
+                cy.get('button.gh-btn.gh-btn-red.gh-btn-icon[data-test-button="delete-tag"]').click();
+                cy.get('div.modal-content[data-test-modal="confirm-delete-tag"]').contains('Delete').click();
+                deleteTagIfExists();
+            }
+        });
+    }
+
+    cy.visit(LOCAL_HOST + "#/tags");
+    cy.wait(1000);
+    deleteTagIfExists();
 });
 
 Cypress.Commands.add('LoginGhost4', () => {
@@ -114,3 +134,25 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     // Return false to prevent Cypress from failing the test
     return false;
 });
+
+Cypress.Commands.add('enableAllNewsletterDesignOptions', () => {
+    cy.visit(Cypress.env('LOCAL_HOST') + "#/settings");
+    cy.get('a#newsletters').click();
+    cy.get('div.grow.py-2').first().click();
+    cy.get('button#design').click();
+
+    cy.get('button[role="switch"]').then(($buttons) => {
+        Cypress._.each(Cypress._.reverse($buttons), ($el) => {
+            const isPostTitleButton = $el.id === ':r2j:';
+
+            if (!isPostTitleButton && ($el.getAttribute('aria-checked') === 'false' || $el.getAttribute('data-state') === 'unchecked')) {
+                cy.wrap($el).click({force: true}).then(() => {
+                    cy.wrap($el).should('have.attr', 'aria-checked', 'true');
+                    cy.wrap($el).should('have.attr', 'data-state', 'checked');
+                });
+            }
+        });
+    });
+    cy.visit(Cypress.env('LOCAL_HOST') + "#/dashboard");
+});
+
