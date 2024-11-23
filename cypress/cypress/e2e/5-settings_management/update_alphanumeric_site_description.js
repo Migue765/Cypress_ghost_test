@@ -20,26 +20,6 @@ describe('Modify Site Name', () => {
 
         // Scenarios with Faker.js
         const scenarios = [
-            //{ description: 'Special characters', data: '!@#$%^&*()', valid: true },
-            { description: 'Numeric title', data: faker.number.int({ min: 10, max: 100 }).toString(), valid: true },
-            {
-                description: 'Alphanumeric title',
-                data: Array.from({ length: 15 }, () =>
-                    faker.string.alphanumeric()
-                ).join(''),
-                valid: true,
-            },
-            {
-                description: 'Valid title',
-                data: faker.string.alpha({ length: 20 }),
-                valid: true,
-            },
-            {
-                description: 'Title too long',
-                data: faker.string.alpha({ length: 300 }), 
-                valid: false,
-            },
-            { description: 'Numeric title', data: faker.number.int({ min: 10, max: 100 }).toString(), valid: true },
             {
                 description: 'Alphanumeric title',
                 data: Array.from({ length: 15 }, () =>
