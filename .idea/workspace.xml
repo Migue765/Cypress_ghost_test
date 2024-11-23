@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f7c34535-5d68-4b77-8563-24d8ae0d51eb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/Cypress_ghost_test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cypress/cypress/e2e/4-tag_management/E031-FK-create_tag_invalid_color.cy.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cypress/cypress/e2e/4-tag_management/E032-FK-create_tag_long_description.cy.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cypress/cypress/e2e/4-tag_management/E033-FK-create_tag_long_name.cy.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cypress/cypress/e2e/4-tag_management/E034-FK-edit_tag_long_name.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cypress/cypress/e2e/4-tag_management/E035-FK-edit_tag_invalid_slug.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cypress/cypress/e2e/4-tag_management/E036-FK-edit_tag_long_meta_title.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cypress/cypress/e2e/4-tag_management/E037-FK-edit_tag_long_meta_url.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cypress/cypress/e2e/4-tag_management/E038-FK-internal_tag_long_name.cy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/cypress.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/cypress.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/cypress/e2e/3-content_management/pageObject.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/cypress/e2e/4-tag_management/--run--tag_management.cy.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/cypress/e2e/4-tag_management/--run--tag_management.cy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/cypress/e2e/4-tag_management/E011-manage_tags.cy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/cypress/e2e/4-tag_management/E012-edit_tag.cy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/cypress/e2e/4-tag_management/E013-filter_posts.cy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/cypress/e2e/4-tag_management/E014-assign_tags.cy.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/cypress/e2e/4-tag_management/E039-FK-assign_tags.cy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/cypress/e2e/4-tag_management/E015-delete_tag.cy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/cypress/support/commands.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/cypress/support/commands.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2p8ffB30IAZTf1Pf3AJzB3bbIRF" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/juamejia/Andes/Cypress_ghost_test/cypress/cypress/e2e/4-tag_management&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/cypress/cypress/e2e/4-tag_management" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f7c34535-5d68-4b77-8563-24d8ae0d51eb" name="Changes" comment="" />
+      <created>1732152724173</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1732152724173</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
