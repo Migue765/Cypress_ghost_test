@@ -6,7 +6,7 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
     env: {
-      LOCAL_HOST: "http://localhost:2369/ghost/",
+      LOCAL_HOST: "http://localhost:2368/ghost/",
       EMAIL: "test@test.com",
       PASSWORD: "6-pVzAeXxT9Uq_-",
       NAME: "Jaime Larson",
