@@ -1,5 +1,4 @@
-import {faker} from '@faker-js/faker';
-const mockData = require('./MOCK_DATA_APRIORI.json');
+const mockData = require('./ap_mock_data.json');
 
 
 describe('Content Management: Create and Verify Page', () => {
