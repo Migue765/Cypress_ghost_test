@@ -27,10 +27,10 @@ describe('Modify Site Name', () => {
         scenarios.forEach((scenario, index) => {
             cy.get('#admin-x-settings-scroller > div > div:nth-child(1) > div > div:nth-child(5) > div.flex.items-start.justify-between.gap-4 > div:nth-child(2) > div > button').click();
             cy.log(`Scenario ${index + 1}: ${scenario.description}`);
-            cy.get('input[placeholder="6xSjs40WnYC6yrY').clear();
+            cy.get('input[placeholder="Thoughts, stories and ideas.').clear();
 
             // Type the data
-            cy.get('input[placeholder="6xSjs40WnYC6yrY').type(scenario.data);
+            cy.get('input[placeholder="Thoughts, stories and ideas.').type(scenario.data);
 
             // Save the settings
             cy.get('#admin-x-settings-scroller button.cursor-pointer.bg-green').click();
@@ -40,7 +40,7 @@ describe('Modify Site Name', () => {
             if (scenario.valid) {
                 cy.reload();
                 cy.get('#admin-x-settings-scroller > div > div:nth-child(1) > div > div:nth-child(5) > div.flex.items-start.justify-between.gap-4 > div:nth-child(2) > div > button').click();
-                cy.get('input[placeholder="6xSjs40WnYC6yrY')
+                cy.get('input[placeholder="Thoughts, stories and ideas.')
                 .should('have.value', scenario.data);
             } else {
                 console.log('no se evidencia error o aivso');

@@ -28,11 +28,11 @@ describe('Modify Site Name', () => {
             cy.get('#admin-x-settings-scroller > div > div:nth-child(1) > div > div:nth-child(6) > div.flex.items-start.justify-between.gap-4 > div:nth-child(2) > div > button').click();
             cy.log(`Scenario ${index + 1}: ${scenario.description}`);
             cy.wait(2000);
-            cy.get('input[placeholder="89XRpkJ5T5ApFg5').clear();
+            cy.get('input[placeholder="My Blog').clear();
 
             // Type the data
             cy.wait(2000);
-            cy.get('input[placeholder="89XRpkJ5T5ApFg5').type(scenario.data);
+            cy.get('input[placeholder="My Blog').type(scenario.data);
 
             // Save the settings
             cy.wait(2000);
@@ -43,7 +43,7 @@ describe('Modify Site Name', () => {
             if (scenario.valid) {
                 cy.reload();
                 cy.get('#admin-x-settings-scroller > div > div:nth-child(1) > div > div:nth-child(6) > div.flex.items-start.justify-between.gap-4 > div:nth-child(2) > div > button').click();
-                cy.get('input[placeholder="89XRpkJ5T5ApFg5')
+                cy.get('input[placeholder="My Blog')
                 .should('have.value', scenario.data);
             } else {
                 console.log('no se evidencia error o aivso');
