@@ -21,7 +21,7 @@ describe('Modify Site Name', () => {
         // Scenarios with Faker.js
         let random_pos= mockData[Math.floor(Math.random() * mockData.length)];
         const scenarios = [
-            { description: 'General ', data: radom_pos.name, valid: true},
+            { description: 'General ', data: random_pos.name, valid: true},
 
         ];
 
