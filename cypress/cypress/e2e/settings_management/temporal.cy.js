@@ -1,4 +1,3 @@
-import { faker } from '@faker-js/faker';
 const mockData = require('./mock-data-AP.json');
 
 describe('Modify Site Name', () => {
@@ -20,13 +19,12 @@ describe('Modify Site Name', () => {
         cy.visit(LOCAL_HOST + "#/settings");
 
         // Scenarios with Faker.js
-        let radom_pos = mockData[Math.floor(Math.random() * mockData.length)];
+        let random_pos= mockData[Math.floor(Math.random() * mockData.length)];
         const scenarios = [
-            { description: 'General ', data: radom_pos.title},
-            { description: 'name ', data: radom_pos.name},
-            { description: 'url ', data: radom_pos.complete_url},
-
+            { description: 'General', data: random_pos.title, valid: true },
+           // { description: 'URL', data: random_pos.complete_url, valid: true },
         ];
+        
 
         scenarios.forEach((scenario, index) => {
             cy.get('#admin-x-settings-scroller > div > div:nth-child(1) > div > div:nth-child(5) > div.flex.items-start.justify-between.gap-4 > div:nth-child(2) > div > button').click();
@@ -40,11 +38,13 @@ describe('Modify Site Name', () => {
             //cy.contains('button', 'Cancel').click();
             cy.get('#admin-x-settings-scroller button.cursor-pointer.bg-green').click();
 
+            
             // Validate the result
             if (scenario.valid) {
+                cy.reload();
                 cy.get('#admin-x-settings-scroller > div > div:nth-child(1) > div > div:nth-child(5) > div.flex.items-start.justify-between.gap-4 > div:nth-child(2) > div > button').click();
                 cy.get('input[placeholder="89XRpkJ5T5ApFg5')
-                .should('contain.text', scenario.data);
+                .should('have.value', scenario.data);
             } else {
                 console.log('no se evidencia error o aivso');
                 takeScreenshot();

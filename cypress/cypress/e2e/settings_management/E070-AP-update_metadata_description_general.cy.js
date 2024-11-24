@@ -1,4 +1,3 @@
-import { faker } from '@faker-js/faker';
 const mockData = require('./mock-data-AP.json');
 
 describe('Modify Site Name', () => {
@@ -20,9 +19,9 @@ describe('Modify Site Name', () => {
         cy.visit(LOCAL_HOST + "#/settings");
 
         // Scenarios with Faker.js
-        let radom_pos = mockData[Math.floor(Math.random() * mockData.length)];
+        let random_pos= mockData[Math.floor(Math.random() * mockData.length)];
         const scenarios = [
-            { description: 'General description', data: radom_pos.description},
+            { description: 'General description', data: radom_pos.description, valid: true},
 
         ];
 
