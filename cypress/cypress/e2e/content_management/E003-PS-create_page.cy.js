@@ -1,5 +1,4 @@
-import {faker} from '@faker-js/faker';
-const mockData = require('./MOCK_DATA_APRIORI.json');
+const mockData = require('./ap_mock_data.json');
 
 
 describe('Content Management: Create and Verify Page', () => {
@@ -27,7 +26,7 @@ describe('Content Management: Create and Verify Page', () => {
         cy.wait(2000);
         cy.url().should('include', '/ghost/#/editor/page');
 
-        cy.get('.gh-editor-title', {timeout: 10000}).should('be.visible');
+        cy.get('.gh-editor-title', { timeout: 10000 }).should('be.visible');
 
         let radom_pos = mockData[Math.floor(Math.random() * mockData.length)];
         let titleFake = radom_pos.titulo

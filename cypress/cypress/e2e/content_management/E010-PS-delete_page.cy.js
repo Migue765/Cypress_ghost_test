@@ -1,4 +1,5 @@
-import { faker } from '@faker-js/faker';
+const mockData = require('./ap_mock_data.json');
+
 
 describe('Content Management: Delete and Verify Post', () => {
 
@@ -28,7 +29,9 @@ describe('Content Management: Delete and Verify Post', () => {
 
         cy.get('.gh-editor-title', { timeout: 10000 }).should('be.visible');
 
-        let titleFake = faker.lorem.words(5);
+        let radom_pos = mockData[Math.floor(Math.random() * mockData.length)];
+        let titleFake = radom_pos.titulo
+        let contentFake = radom_pos.contenido
         cy.get('.gh-editor-title').type(titleFake);
         cy.get('[data-secondary-instance="false"]').type("hello");
         cy.get('[data-test-button="publish-flow"]').first().click();
