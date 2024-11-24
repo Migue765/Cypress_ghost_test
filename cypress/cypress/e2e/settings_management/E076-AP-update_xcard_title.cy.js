@@ -18,29 +18,30 @@ describe('Modify Site Name', () => {
     it('Modify the site name with valid and invalid data', () => {
         cy.visit(LOCAL_HOST + "#/settings");
 
-        // Scenarios with Faker.js
         let random_pos= mockData[Math.floor(Math.random() * mockData.length)];
         const scenarios = [
-            { description: 'url ', data: radom_pos.complete_url, valid: true},
-
+            { description: 'General', data: random_pos.title, valid: true },
         ];
+        
 
         scenarios.forEach((scenario, index) => {
-            cy.get('#admin-x-settings-scroller > div > div:nth-child(1) > div > div:nth-child(7) > div.flex.items-start.justify-between.gap-4 > div:nth-child(2) > div > button').click();
+            cy.get('#admin-x-settings-scroller > div > div:nth-child(1) > div > div:nth-child(5) > div.flex.items-start.justify-between.gap-4 > div:nth-child(2) > div > button').click();
             cy.log(`Scenario ${index + 1}: ${scenario.description}`);
-            cy.get('input[placeholder="https://www.facebook.com/ghost"]').clear();
+            cy.get('input[placeholder="89XRpkJ5T5ApFg5').clear();
 
             // Type the data
-            cy.get('input[placeholder="https://www.facebook.com/ghost"]').type(scenario.data);
+            cy.get('input[placeholder="89XRpkJ5T5ApFg5').type(scenario.data);
 
-            // Cancel the settings
-            cy.contains('button', 'Cancel').click();
+            // Save the settings
+            cy.get('#admin-x-settings-scroller button.cursor-pointer.bg-green').click();
+
+            
             // Validate the result
             if (scenario.valid) {
                 cy.reload();
-                cy.get('div.flex.items-center.mt-1')
-                .eq(3) 
-                .should('not.contain.text', scenario.data.substring(0, 10));
+                cy.get('#admin-x-settings-scroller > div > div:nth-child(1) > div > div:nth-child(5) > div.flex.items-start.justify-between.gap-4 > div:nth-child(2) > div > button').click();
+                cy.get('input[placeholder="89XRpkJ5T5ApFg5')
+                .should('have.value', scenario.data);
             } else {
                 console.log('no se evidencia error o aivso');
                 takeScreenshot();
