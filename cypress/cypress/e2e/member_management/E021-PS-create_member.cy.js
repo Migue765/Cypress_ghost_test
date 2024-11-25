@@ -1,3 +1,5 @@
+const mockData = require('./ap_mock_memeber.json');
+
 describe('Member Management: Add and Verify Member', () => {
 
     const LOCAL_HOST = Cypress.env('LOCAL_HOST');
@@ -23,28 +25,41 @@ describe('Member Management: Add and Verify Member', () => {
 
         cy.visit(LOCAL_HOST + "#/dashboard");
         cy.wait(4000);
-        takeScreenshot();
 
         // Enter the members section
         cy.get('[data-test-nav="members"]').click();
         cy.url().should('include', '/ghost/#/members');
-        takeScreenshot();
 
         // Create a new member
         cy.get('[data-test-new-member-button]').click();
         cy.wait(2000);
         cy.url().should('include', '/ghost/#/members/new');
-        takeScreenshot();
 
-        cy.get('[data-test-input="member-name"]').type('John Doe');
-        cy.get('[data-test-input="member-email"]').type('test2a25@test.com');
-        cy.get('.ember-power-select-trigger-multiple-input').type('Test Label{enter}');
-        cy.get('[data-test-input="member-note"]').type('Test Note');
-        takeScreenshot();
+        let radom_pos = mockData[Math.floor(Math.random() * mockData.length)];
+        let name = radom_pos.name
+        let email = radom_pos.email
+        let note = radom_pos.note
+        let label = radom_pos.label
+        cy.get('[data-test-input="member-name"]').type(name);
+        cy.get('[data-test-input="member-email"]').type(email);
+        cy.get('.ember-power-select-trigger-multiple-input').type(label);
+        cy.get('[data-test-input="member-note"]').type(note);
 
         cy.get('[data-test-button="save"]').click();
 
+        cy.get('[data-test-nav="members"]').click();
+
+        cy.get('[data-test-list="members-list-item"]').first().invoke('text').should('include', name);
+
+        //Delete member
+        cy.get('[data-test-list="members-list-item"]').each(($el, index, $list) => {
+            cy.get('[data-test-list="members-list-item"]').first().click();
+            cy.get('[data-test-button="member-actions"]').click();
+            cy.get('[data-test-button="delete-member"').click();
+            cy.get('[data-test-button="confirm"]').click();
+            cy.wait(1000);
+        });
+
         cy.url().should('include', '/ghost/#/members');
-        takeScreenshot();
     });
 });

@@ -1,4 +1,4 @@
-const { faker } = require("@faker-js/faker");
+const mockData = require('./ap_mock_memeber.json');
 
 describe('Member Management: Add and Verify Member', () => {
 
@@ -24,7 +24,7 @@ describe('Member Management: Add and Verify Member', () => {
     it('Add a new member and verify it appears in the list of members', () => {
 
         cy.visit(LOCAL_HOST + "#/dashboard");
-        cy.wait(4000);
+        cy.wait(2000);
 
         // Enter the members section
         cy.get('[data-test-nav="members"]').click();
@@ -35,10 +35,11 @@ describe('Member Management: Add and Verify Member', () => {
         cy.wait(2000);
         cy.url().should('include', '/ghost/#/members/new');
 
-        let name = faker.name.firstName() + ' ' + faker.name.lastName();
-        let email = faker.internet.email();
-        let note = faker.lorem.sentence();
-        let label = faker.animal.cat();
+        let radom_pos = mockData[Math.floor(Math.random() * mockData.length)];
+        let name = radom_pos.name
+        let email = radom_pos.email
+        let note = radom_pos.note
+        let label = radom_pos.label
         cy.get('[data-test-input="member-name"]').type(name);
         cy.get('[data-test-input="member-email"]').type(email);
         cy.get('.ember-power-select-trigger-multiple-input').type(label);
@@ -59,8 +60,6 @@ describe('Member Management: Add and Verify Member', () => {
             cy.wait(1000);
         });
 
-        cy.url().should('include', '/ghost/#/members');
-
-
+        cy.get('[data-test-list="members-list-item"]').first().invoke('text').should('not.include', name);
     });
 });

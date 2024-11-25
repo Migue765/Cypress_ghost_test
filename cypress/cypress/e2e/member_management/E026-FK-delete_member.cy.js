@@ -59,8 +59,6 @@ describe('Member Management: Add and Verify Member', () => {
             cy.wait(1000);
         });
 
-        cy.url().should('include', '/ghost/#/members');
-
-
+        cy.get('[data-test-list="members-list-item"]').first().invoke('text').should('not.include', name);
     });
 });
