@@ -1,8 +1,7 @@
-import './E008-create_page.cy.js';
-import './E009-create_published.cy.js';
-import './E010-delete_page.cy.js';
+const requireTestFiles = require.context('../content_management', true, /\.cy\.js$/);
 
+requireTestFiles.keys().forEach(requireTestFiles);
 
 describe('Run All Scenarios', () => {
-
+    // All tests in the tag_management folder will be executed
 });

@@ -1,7 +1,7 @@
-import './E006-add_new_member.cy.js';
-import './E007-edit_member.cy.js';
+const requireTestFiles = require.context('../member_management', true, /\.cy\.js$/);
 
+requireTestFiles.keys().forEach(requireTestFiles);
 
 describe('Run All Scenarios', () => {
-
+    // All tests in the tag_management folder will be executed
 });
