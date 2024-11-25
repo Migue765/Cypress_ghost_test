@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker';
+const mockData = require('./ps_mock_page.json');
 
 describe('Content Management: Create and Verify Post', () => {
 
@@ -33,10 +33,9 @@ describe('Content Management: Create and Verify Post', () => {
         cy.wait(2000);
         cy.url().should('include', '/ghost/#/editor/post');
 
-        cy.get('.gh-editor-title', { timeout: 10000 }).should('be.visible');
-
-        let titleFake = faker.lorem.words(5);
-        let contentFake = faker.lorem.paragraphs(5);
+        let radom_pos = mockData[Math.floor(Math.random() * mockData.length)];
+        let titleFake = radom_pos.titulo;
+        let contentFake = radom_pos.contenido;
         cy.get('.gh-editor-title').type(titleFake);
         cy.get('[data-secondary-instance="false"]').type(contentFake);
 
@@ -48,6 +47,19 @@ describe('Content Management: Create and Verify Post', () => {
 
         cy.url().should('include', '/ghost/#/posts');
 
+        cy.get('div.posts-list.gh-list.feature-memberAttribution')
+            .should('contain', titleFake);
+
+        cy.get('div.posts-list.gh-list.feature-memberAttribution').first().click();
+        radom_pos = mockData[Math.floor(Math.random() * mockData.length)];
+        titleFake = radom_pos.titulo;
+        contentFake = radom_pos.contenido
+        cy.get('.gh-editor-title').clear();
+        cy.get('.gh-editor-title').type(titleFake);
+        cy.get('[data-secondary-instance="false"]').clear();
+        cy.get('[data-secondary-instance="false"]').type(contentFake);
+        cy.get('[data-test-task-button-state="idle"]').first().click();
+        cy.visit(LOCAL_HOST + "#/posts");
         cy.get('div.posts-list.gh-list.feature-memberAttribution')
             .should('contain', titleFake);
 
