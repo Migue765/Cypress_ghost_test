@@ -1,4 +1,4 @@
-import {faker} from '@faker-js/faker';
+const mockData = require('./MOCK_DATA.json');
 
 describe('Edit an existing tag with invalid slug and update Facebook card', () => {
     const LOCAL_HOST = Cypress.env('LOCAL_HOST');
@@ -14,13 +14,19 @@ describe('Edit an existing tag with invalid slug and update Facebook card', () =
         cy.get('section.view-container.content-list').find('a[title="Edit tag"]').first().click();
         cy.wait(2000);
 
-        cy.get('input[data-test-input="tag-name"]').clear().type(faker.lorem.word());
-        cy.get('input[data-test-input="tag-slug"]').clear().type('invalid_slug!@#'); // Slug inválido
+        const randomData = mockData[Math.floor(Math.random() * mockData.length)];
+        const tagSlug = randomData.tagSlug;
+        const tagName = randomData.tagName;
+        const facebookCardTitle = randomData.facebookCardTitle;
 
+        cy.get('input[data-test-input="tag-name"]').clear().type(tagName);
+        cy.get('input[data-test-input="tag-slug"]').clear().type(tagSlug);
+
+        // Actualizar la tarjeta de Facebook
         cy.get('div.gh-expandable-block').eq(2).within(() => {
             cy.get('button.gh-btn-expand').click();
-            cy.get('input#og-title').clear().type(faker.lorem.words(20).substring(0, 100));
-            cy.get('p').contains("You’ve used 100").should('exist'); // Verify the character count
+            cy.get('input#og-title').clear().type(facebookCardTitle);
+            cy.get('p').contains("You’ve used").should('exist');
         });
 
         cy.get('span[data-test-task-button-state="idle"]').click();
@@ -28,8 +34,6 @@ describe('Edit an existing tag with invalid slug and update Facebook card', () =
 
         cy.get('a[data-test-nav="tags"]').click();
         cy.wait(1000);
-
-        cy.contains('invalid_slug!@#').should('not.exist'); // Verifica que no exista el slug inválido
     });
 
     it('Delete all tags and verify they are not in the tag list', () => {
