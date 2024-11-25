@@ -1,4 +1,4 @@
-const mockData = require('./ps_mock_memeber.json');
+const mockData = require('./ps_mock_member.json');
 
 describe('Member Management: Add and Verify Member', () => {
 
