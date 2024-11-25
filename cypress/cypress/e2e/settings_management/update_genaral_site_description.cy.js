@@ -44,9 +44,19 @@ describe('Modify Site Name', () => {
                 cy.get('div.flex.items-center.mt-1')
                 .eq(1) 
                 .should('contain.text', scenario.data);
+                //restart
+                cy.get('#admin-x-settings-scroller > div > div:nth-child(1) > div > div:nth-child(1) > div.flex.items-start.justify-between.gap-4 > div:nth-child(2) > div > button').click();
+                cy.get('input[placeholder="Site description"]').clear();
+                cy.get('input[placeholder="Site description"]').type('Thoughts, stories and ideas.');
+                cy.get('#admin-x-settings-scroller button.cursor-pointer.bg-green').click();
             } else {
                 console.log('no se evidencia error o aivso');
                 takeScreenshot();
+                //restart
+                cy.get('#admin-x-settings-scroller > div > div:nth-child(1) > div > div:nth-child(1) > div.flex.items-start.justify-between.gap-4 > div:nth-child(2) > div > button').click();
+                cy.get('input[placeholder="Site description"]').clear();
+                cy.get('input[placeholder="Site description"]').type('Thoughts, stories and ideas.');
+                cy.get('#admin-x-settings-scroller button.cursor-pointer.bg-green').click();
             }
         });
     });
