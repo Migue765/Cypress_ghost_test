@@ -1,4 +1,4 @@
-const mockData = require('./ps_mock_memeber.json');
+const mockData = require('./ps_mock_member.json');
 
 describe('Member Management: Add and Verify Member', () => {
 
@@ -59,7 +59,7 @@ describe('Member Management: Add and Verify Member', () => {
         // intengo crear nuevmanete el miembro con el mismo name
         cy.get('[data-test-input="member-name"]').type(name);
         cy.get('[data-test-input="member-email"]').type(email);
-        cy.get('.ember-power-select-trigger-multiple-input').type(label);
+        cy.get('.ember-power-select-trigger-multiple-input').type(label + '{enter}');
         cy.get('[data-test-input="member-note"]').type(note);
 
         cy.get('[data-test-button="save"]').click();

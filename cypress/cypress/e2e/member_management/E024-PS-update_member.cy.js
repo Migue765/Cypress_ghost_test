@@ -1,4 +1,4 @@
-const mockData = require('./ps_mock_memeber.json');
+const mockData = require('./ps_mock_member.json');
 
 describe('Member Management: Add and Verify Member', () => {
 
@@ -58,10 +58,11 @@ describe('Member Management: Add and Verify Member', () => {
         email = radom_pos.email
         note = radom_pos.note
         label = radom_pos.label
-        cy.get('[data-test-input="member-name"]').type(name);
-        cy.get('[data-test-input="member-email"]').type(email);
-        cy.get('.ember-power-select-trigger-multiple-input').type(label);
-        cy.get('[data-test-input="member-note"]').type(note);
+        cy.get('[data-test-input="member-name"]').clear().type(name);
+        cy.get('[data-test-input="member-email"]').clear().type(email);
+        cy.get('.ember-power-select-trigger-multiple-input').clear().type(label + '{enter}');
+        cy.get('[data-test-input="member-note"]').clear().type(note);
+        cy.wait(2000);
 
         cy.get('[data-test-button="save"]').click();
 

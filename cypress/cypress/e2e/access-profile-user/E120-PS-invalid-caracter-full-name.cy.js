@@ -14,7 +14,7 @@ describe('Acces-profile-user: Verify full name text', () => {
 
     it('Should error in invalid full name', () => {
 
-        cy.request('GET', APIREST).then((response) => {
+        cy.request('GET', APIREST + '?schema=EditProfile').then((response) => {
                 expect(response.status).to.eq(200); 
 
              

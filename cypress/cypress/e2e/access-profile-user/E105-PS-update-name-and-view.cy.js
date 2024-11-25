@@ -15,7 +15,7 @@ describe('Access profile: View name update', () => {
 
   it('I should update a name and view the name', () => {
 
-      cy.request('GET', APIREST).then((response) => {
+      cy.request('GET', APIREST + '?schema=EditProfile').then((response) => {
    
           expect(response.status).to.eq(200);
 

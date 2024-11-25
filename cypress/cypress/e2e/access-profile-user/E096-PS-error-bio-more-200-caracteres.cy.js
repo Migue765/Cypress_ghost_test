@@ -15,7 +15,7 @@ it('I should see error update more 200 characters', () => {
 
     let bios = '';
 
-    cy.request('GET', APIREST).then((response) => {
+    cy.request('GET', APIREST + '?schema=EditProfile').then((response) => {
         expect(response.status).to.eq(200);
 
         for (let i = 0; i < 5; i++) {
