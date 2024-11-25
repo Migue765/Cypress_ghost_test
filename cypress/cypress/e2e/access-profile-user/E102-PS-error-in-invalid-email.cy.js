@@ -16,15 +16,12 @@ describe('Access profile: View error invalid email', () => {
 
     it('I should error in invalid email', () => {
 
-
-        cy.request('GET', APIREST).then((response) => {
+        cy.request('GET', APIREST + '?schema=EditProfile').then((response) => {
 
             expect(response.status).to.eq(200);
 
-
             let radom_data = response.body[Math.floor(Math.random() * response.body.length)];
             const email = radom_data.fullname;  
-
 
             cy.visit(LOCAL_HOST + "#/dashboard");
             cy.wait(2000);

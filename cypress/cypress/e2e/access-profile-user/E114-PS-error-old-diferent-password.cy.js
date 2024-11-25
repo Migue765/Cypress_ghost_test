@@ -14,7 +14,7 @@ describe('Access profile: view error old different password', () => {
 
     it('Should view error old different password', () => {
 
-        cy.request('GET', APIREST).then((response) => {
+        cy.request('GET', APIREST + '?schema=EditProfile').then((response) => {
                 expect(response.status).to.eq(200); 
 
        

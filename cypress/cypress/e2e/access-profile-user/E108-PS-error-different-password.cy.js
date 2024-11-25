@@ -20,7 +20,7 @@ describe('Access profile: View error different password', () => {
         const password = PASSWORD;
 
        
-        cy.request('GET', APIREST).then((response) => {
+        cy.request('GET', APIREST + '?schema=EditProfile').then((response) => {
             
             expect(response.status).to.eq(200);
 
