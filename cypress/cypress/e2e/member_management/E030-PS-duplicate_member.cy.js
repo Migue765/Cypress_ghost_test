@@ -1,4 +1,4 @@
-const mockData = require('./ap_mock_memeber.json');
+const mockData = require('./ps_mock_memeber.json');
 
 describe('Member Management: Add and Verify Member', () => {
 
@@ -24,7 +24,7 @@ describe('Member Management: Add and Verify Member', () => {
     it('Add a new member and verify it appears in the list of members', () => {
 
         cy.visit(LOCAL_HOST + "#/dashboard");
-        cy.wait(4000);
+        cy.wait(2000);
 
         // Enter the members section
         cy.get('[data-test-nav="members"]').click();
@@ -50,6 +50,25 @@ describe('Member Management: Add and Verify Member', () => {
         cy.get('[data-test-nav="members"]').click();
 
         cy.get('[data-test-list="members-list-item"]').first().invoke('text').should('include', name);
+
+        // Create a new member
+        cy.get('[data-test-new-member-button]').click();
+        cy.wait(2000);
+        cy.url().should('include', '/ghost/#/members/new');
+
+        // intengo crear nuevmanete el miembro con el mismo name
+        cy.get('[data-test-input="member-name"]').type(name);
+        cy.get('[data-test-input="member-email"]').type(email);
+        cy.get('.ember-power-select-trigger-multiple-input').type(label);
+        cy.get('[data-test-input="member-note"]').type(note);
+
+        cy.get('[data-test-button="save"]').click();
+
+        cy.get('div.gh-cp-member-email-name').should('contain', 'Member already exists. Attempting to add member with existing email address');
+
+        cy.get('[data-test-nav="members"]').click();
+
+        cy.get('[data-test-leave-button]').click();
 
         //Delete member
         cy.get('[data-test-list="members-list-item"]').each(($el, index, $list) => {
