@@ -1,4 +1,4 @@
-import {faker} from '@faker-js/faker';
+const mockData = require('./MOCK_DATA.json');
 
 describe('Edit an existing tag with invalid slug', () => {
     const LOCAL_HOST = Cypress.env('LOCAL_HOST');
@@ -15,12 +15,15 @@ describe('Edit an existing tag with invalid slug', () => {
         cy.get('section.view-container.content-list').find('a[title="Edit tag"]').first().click();
         cy.wait(2000);
 
-        cy.get('input[data-test-input="tag-name"]').clear().type(faker.lorem.word());
-        cy.get('input[data-test-input="tag-slug"]').clear().type('invalid_slug!@#');
+        const randomData = mockData[Math.floor(Math.random() * mockData.length)];
+        const longMetaTitle = randomData.longDescription;
+        const tagSlug = randomData.tagSlug;
+
+        cy.get('input[data-test-input="tag-name"]').clear().type(randomData.tagName);
+        cy.get('input[data-test-input="tag-slug"]').clear().type(tagSlug);
 
         cy.get('button.gh-btn.gh-btn-expand').first().click();
-        const longMetaTitle = faker.lorem.words(40);
-        cy.get('input#meta-title').clear().type(longMetaTitle); // Meta title válido
+        cy.get('input#meta-title').clear().type(longMetaTitle);
         cy.wait(2000);
 
         cy.get('span[data-test-task-button-state="idle"]').click();
@@ -29,7 +32,7 @@ describe('Edit an existing tag with invalid slug', () => {
         cy.get('a[data-test-nav="tags"]').click();
         cy.wait(1000);
 
-        expect(longMetaTitle.length).to.be.greaterThan(70); // Verifica que el título tenga más de 70 caracteres
+        expect(longMetaTitle.length).to.be.greaterThan(70);
     });
 
     it('Delete all tags and verify they are not in the tag list', () => {
