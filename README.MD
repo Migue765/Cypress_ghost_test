@@ -92,3 +92,9 @@ npm install @faker-js/faker --save-dev
 # Cypress test 120 :)
 Click aquí para ser dirigido a la Wiki con la descripción de las pruebas realizadas.
 
+
+## Pasos para ejecutar servicio de MOCKAROO-API
+A continuacion se detallan los pasos para ejecutar y configurar el servicio para pruebas pseudo
+1. Ir  a la url del repo https://github.com/nataliaarandio/MOCKAROO-API en el readme de este se detalla la ejecucion del servicio
+2. Para validar el servicio basta con ejecutar ejemplo http://localhost:3010/api/data y si nos retorna datos quiere decir que esta correcto el despligue.
+3. Una vez arriba el servicio  se  Abre el archivo `cypress/cypress.config.js` y modificamos el APIREST con la ruta correcta 

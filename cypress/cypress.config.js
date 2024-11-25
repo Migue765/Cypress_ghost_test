@@ -15,6 +15,7 @@ module.exports = defineConfig({
       TAG_COLOR: 'FF5733',
       DESCRIPTION: 'This is a description for the new tag. It is a very long description that will be used to test the functionality of the tag creation process.',
       NEW_NAME_TAG: 'New Spectacular Tag 1 Edited',
+      APIREST: "http://localhost:3006/api/data"
 
     }
   },
