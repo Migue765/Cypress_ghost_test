@@ -1,4 +1,4 @@
-const mockData = require('./ap_mock_data.json');
+const mockData = require('./ps_mock_page.json');
 
 
 describe('Content Management: Create and Verify Page', () => {

@@ -1,4 +1,4 @@
-const mockData = require('./ap_mock_data.json');
+const mockData = require('./ps_mock_page.json');
 
 
 describe('Content Management: Create and Verify Page', () => {
@@ -32,7 +32,7 @@ describe('Content Management: Create and Verify Page', () => {
         let titleFake = radom_pos.titulo
         let contentFake = radom_pos.contenido
         cy.get('.gh-editor-title').type(titleFake);
-        cy.get('[data-secondary-instance="false"]').type("hello");
+        cy.get('[data-secondary-instance="false"]').type(contentFake);
         cy.get('[data-test-button="publish-flow"]').first().click();
         cy.get('[data-test-button="continue"]').click();
         cy.get('[data-test-button="confirm-publish"]').click();
