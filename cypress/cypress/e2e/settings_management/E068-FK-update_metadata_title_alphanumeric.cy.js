@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
 
-describe('Modify Site Name', () => {
+describe('Modify metadata title', () => {
 
     const LOCAL_HOST = Cypress.env('LOCAL_HOST');
     const SCREENSHOT_PATH = 'E016-modify_site_name_before/modify_site_name';
@@ -15,7 +15,7 @@ describe('Modify Site Name', () => {
         cy.LoginGhost();
     });
 
-    it('Modify the site name with valid and invalid data', () => {
+    it('Modify the metadata title with valid and invalid data', () => {
         cy.visit(LOCAL_HOST + "#/settings");
 
         // Scenarios with Faker.js

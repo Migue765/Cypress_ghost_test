@@ -1,6 +1,6 @@
 const mockData = require('./mock-data-AP.json');
 
-describe('Modify Site Name', () => {
+describe('Modify facebook card', () => {
 
     const LOCAL_HOST = Cypress.env('LOCAL_HOST');
     const SCREENSHOT_PATH = 'E016-modify_site_name_before/modify_site_name';
@@ -15,7 +15,7 @@ describe('Modify Site Name', () => {
         cy.LoginGhost();
     });
 
-    it('Modify the site name with valid and invalid data', () => {
+    it('Modify the facebook card with valid and invalid data', () => {
         cy.visit(LOCAL_HOST + "#/settings");
 
         let random_pos= mockData[Math.floor(Math.random() * mockData.length)];
