@@ -1,4 +1,6 @@
-const mockData = require('./ps_mock_page.json');
+const LOCAL_HOST = Cypress.env('LOCAL_HOST');
+const APIREST = Cypress.env('APIREST');
+
 
 describe('Content Management: Create and Verify Post', () => {
 
@@ -56,9 +58,8 @@ describe('Content Management: Create and Verify Post', () => {
                 .should('contain', titleFake);
 
             cy.get('div.posts-list.gh-list.feature-memberAttribution').first().click();
-            radom_data = response.body[Math.floor(Math.random() * response.body.length)];
-            titleFake = radom_pos.titulo;
-            contentFake = radom_pos.contenido;
+            titleFake = radom_data.titulo;
+            contentFake = radom_data.contenido;
             cy.get('.gh-editor-title').clear();
             cy.get('.gh-editor-title').type(titleFake);
             cy.get('[data-secondary-instance="false"]').clear();
