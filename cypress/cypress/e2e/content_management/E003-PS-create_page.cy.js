@@ -1,4 +1,4 @@
-const mockData = require('./ap_mock_data.json');
+const mockData = require('./ps_mock_page.json');
 
 
 describe('Content Management: Create and Verify Page', () => {
@@ -32,7 +32,7 @@ describe('Content Management: Create and Verify Page', () => {
         let titleFake = radom_pos.titulo
         let contentFake = radom_pos.contenido
         cy.get('.gh-editor-title').type(titleFake);
-        cy.get('[data-secondary-instance="false"]').type("hello");
+        cy.get('[data-secondary-instance="false"]').type(contentFake);
         cy.get('[data-test-button="publish-flow"]').first().click();
         cy.get('[data-test-button="continue"]').click();
         cy.get('[data-test-button="confirm-publish"]').click();
@@ -42,8 +42,15 @@ describe('Content Management: Create and Verify Page', () => {
         cy.get('div.posts-list.gh-list.feature-memberAttribution')
             .should('contain', titleFake);
 
-        let result = cy.get(".view-container.content-list").get('.gh-list-row.gh-posts-list-item.gh-post-list-plain-status')
-
+        //Delete pages
+        cy.get('.gh-list-row.gh-posts-list-item.gh-post-list-plain-status').each(
+            ($el, index, $list) => {
+                cy.get('div.posts-list.gh-list.feature-memberAttribution').first().click();
+                cy.get('[data-test-psm-trigger]').click();
+                cy.get('[data-test-button="delete-post"]').click();
+                cy.get('[data-test-button="delete-post-confirm"]').click();
+            }
+        )
         cy.url().should('include', '/ghost/#/pages');
     });
 });

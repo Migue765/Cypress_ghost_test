@@ -28,7 +28,10 @@ import './E087-AP-update_tiers_long_description_preview.cy'
 import './E088-AP-update_tiers_url_general.cy'
 import './E089-AP-configure_custom_integration.cy'
 import './E090-FK-modify_alphanumeric_site_name.cy'
+const requireTestFiles = require.context('../settings_management', true, /\.cy\.js$/);
+
+requireTestFiles.keys().forEach(requireTestFiles);
 
 describe('Run All Scenarios', () => {
-
+    // All tests in the tag_management folder will be executed
 });

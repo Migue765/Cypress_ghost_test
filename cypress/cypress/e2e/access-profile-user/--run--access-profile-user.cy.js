@@ -1,10 +1,7 @@
-import './E001-access_user_profile_from_the_menu.cy.js';
-import './E002-view_date_user_profile.cy.js';
-import './E003-view_menu_activity_user.cy.js';
-import './E004-view_history_activity_user.cy.js';
-import './E005-view_error_update_website.cy.js';
+const requireTestFiles = require.context('../access-profile-user', true, /\.cy\.js$/);
 
+requireTestFiles.keys().forEach(requireTestFiles);
 
 describe('Run All Scenarios', () => {
-
+    // All tests in the tag_management folder will be executed
 });

@@ -51,6 +51,14 @@ describe('Content Management: Create and Verify Post', () => {
         cy.get('div.posts-list.gh-list.feature-memberAttribution')
             .should('contain', titleFake);
 
+        cy.get(".view-container.content-list").find('.gh-list-row.gh-posts-list-item.gh-post-list-plain-status')
+            .each((el, index) => {
+                cy.get(`.gh-list-row.gh-posts-list-item.gh-post-list-plain-status`).first().click();
+                cy.get('[data-test-psm-trigger]').click();
+                cy.get('[data-test-button="delete-post"]').click();
+                cy.get('[data-test-button="delete-post-confirm"]').click();
+            });
 
+        cy.get('section.gh-canvas.gh-canvas-sticky').find('.view-container.content-list').should('not.contain', titleFake);
     });
 });
