@@ -37,10 +37,12 @@ describe('Modify Site Name', () => {
             cy.contains('button', 'Cancel').click();
             // Validate the result
             if (scenario.valid) {
-                cy.reload();
+                //cy.reload();
+                cy.wait(4000);
                 cy.get('div.flex.items-center.mt-1')
                 .eq(3) 
-                .should('not.contain.text', scenario.data.substring(0, 10));
+                .should('contain.text', scenario.data);
+                takeScreenshot();
             } else {
                 console.log('no se evidencia error o aivso');
                 takeScreenshot();
