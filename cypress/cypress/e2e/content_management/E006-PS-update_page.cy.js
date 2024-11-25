@@ -29,16 +29,21 @@ describe('Content Management: Create and Verify Page', () => {
         cy.get('.gh-editor-title', { timeout: 10000 }).should('be.visible');
 
         let radom_pos = mockData[Math.floor(Math.random() * mockData.length)];
-        let titleFake = radom_pos.titulo;
+        let titleFake = radom_pos.titulo
+        let contentFake = radom_pos.contenido
         cy.get('.gh-editor-title').type(titleFake);
         cy.get('[data-secondary-instance="false"]').type("hello");
         cy.get('[data-test-button="publish-flow"]').first().click();
         cy.get('[data-test-button="continue"]').click();
         cy.get('[data-test-button="confirm-publish"]').click();
+
         cy.get('[data-test-button="close-publish-flow"]').click();
+
         cy.get('div.posts-list.gh-list.feature-memberAttribution')
             .should('contain', titleFake);
+
         let result = cy.get(".view-container.content-list").get('.gh-list-row.gh-posts-list-item.gh-post-list-plain-status')
+
         cy.url().should('include', '/ghost/#/pages');
     });
 });

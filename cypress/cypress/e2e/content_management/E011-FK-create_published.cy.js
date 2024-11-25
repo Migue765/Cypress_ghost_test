@@ -36,9 +36,9 @@ describe('Content Management: Create and Verify Post', () => {
         cy.get('.gh-editor-title', { timeout: 10000 }).should('be.visible');
 
         let titleFake = faker.lorem.words(5);
+        let contentFake = faker.lorem.paragraphs(5);
         cy.get('.gh-editor-title').type(titleFake);
-        cy.get('.gh-editor-title').type('My first page{enter}');
-        cy.get('[data-secondary-instance="false"]').type("hello");
+        cy.get('[data-secondary-instance="false"]').type(contentFake);
 
         cy.get('[data-test-button="publish-flow"]').first().click();
         cy.get('[data-test-button="continue"]').click();
