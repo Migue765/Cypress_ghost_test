@@ -73,21 +73,19 @@ Cypress.Commands.add('LoginGhost4', () => {
     });
 });
 
-Cypress.Commands.add('createTags', () => {
+Cypress.Commands.add('createTags', (nameTag = Cypress.env('NAME_TAG_1')) => {
     const LOCAL_HOST = Cypress.env('LOCAL_HOST');
-    const NAME_TAG_1 = Cypress.env('NAME_TAG_1');
     const TAG_COLOR = Cypress.env('TAG_COLOR');
     const DESCRIPTION = Cypress.env('DESCRIPTION');
 
     cy.visit(LOCAL_HOST + "#/tags/new");
     cy.wait(2000);
-    cy.get('input[data-test-input="tag-name"]').type(NAME_TAG_1);
+    cy.get('input[data-test-input="tag-name"]').type(nameTag);
     cy.get('input[data-test-input="accentColor"]').type(TAG_COLOR);
     cy.get('textarea[data-test-input="tag-description"]').type(DESCRIPTION);
     cy.wait(1000);
     cy.get('span[data-test-task-button-state="idle"]').click();
     cy.wait(1000);
-
 });
 
 Cypress.Commands.add('enableNewsletterSubscription', () => {
