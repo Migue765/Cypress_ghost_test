@@ -2,7 +2,6 @@ const LOCAL_HOST = Cypress.env('LOCAL_HOST');
 const APIREST = Cypress.env('APIREST');
 
 describe('Create a new tag with invalid accent color', () => {
-    const LOCAL_HOST = Cypress.env('LOCAL_HOST');
 
     beforeEach("Precondition: Admin login", () => {
         cy.LoginGhost();
@@ -13,8 +12,6 @@ describe('Create a new tag with invalid accent color', () => {
         cy.request('GET', APIREST + '?schema=tag').then((response) => {
 
             expect(response.status).to.eq(200);
-
-
             let radom_data = response.body[Math.floor(Math.random() * response.body.length)];
 
             const randomTagName = radom_data.tagName;
