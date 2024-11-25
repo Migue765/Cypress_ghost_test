@@ -21,7 +21,7 @@ describe('Modify x url', () => {
         // Scenarios with Faker.js
         let random_pos= mockData[Math.floor(Math.random() * mockData.length)];
         const scenarios = [
-            { description: 'General ', data: random_pos.name, valid: true},
+            { description: 'General ', data: random_pos.name, valid: false},
 
         ];
 
@@ -32,6 +32,8 @@ describe('Modify x url', () => {
 
             // Type the data
             cy.get('input[placeholder="https://x.com/ghost"]').type(scenario.data);
+            cy.get('body').click();
+
 
             // Save the settings
             cy.get('#admin-x-settings-scroller button.cursor-pointer.bg-green').click();

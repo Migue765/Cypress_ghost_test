@@ -21,7 +21,7 @@ describe('Modify facebook url', () => {
         // Scenarios with Faker.js
         let random_pos= mockData[Math.floor(Math.random() * mockData.length)];
         const scenarios = [
-            { description: 'General ', data: random_pos.name},
+            { description: 'General ', data: random_pos.name, valid: false},
 
         ];
 
@@ -32,7 +32,8 @@ describe('Modify facebook url', () => {
 
             // Type the data
             cy.get('input[placeholder="https://www.facebook.com/ghost"]').type(scenario.data);
-
+            cy.get('body').click();
+            
             // Save the settings
             cy.get('#admin-x-settings-scroller button.cursor-pointer.bg-green').click();
 

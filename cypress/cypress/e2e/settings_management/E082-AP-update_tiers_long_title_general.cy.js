@@ -1,6 +1,6 @@
 const mockData = require('./mock-data-AP.json');
 
-describe('Modify tiers title', () => {
+describe('Modify tiers long title', () => {
 
     const LOCAL_HOST = Cypress.env('LOCAL_HOST');
     const SCREENSHOT_PATH = 'E016-modify_site_name_before/modify_site_name';

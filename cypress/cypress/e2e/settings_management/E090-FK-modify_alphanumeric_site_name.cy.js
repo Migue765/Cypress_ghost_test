@@ -1,4 +1,4 @@
-const mockData = require('./mock-data-AP.json');
+import { faker } from '@faker-js/faker';
 
 describe('Modify Site Name', () => {
 
@@ -18,37 +18,32 @@ describe('Modify Site Name', () => {
     it('Modify the site name with valid and invalid data', () => {
         cy.visit(LOCAL_HOST + "#/settings");
 
-        // Scenarios with Faker.js
-        let random_pos= mockData[Math.floor(Math.random() * mockData.length)];
         const scenarios = [
-            { description: 'General', data: random_pos.title, valid: true },
+            {
+                description: 'Alphanumeric title',
+                data: Array.from({ length: 15 }, () =>
+                    faker.string.alphanumeric()
+                ).join(''),
+                valid: true,
+            },
         ];
-        
 
         scenarios.forEach((scenario, index) => {
-            cy.get('div[data-testid="tier-card"][data-tier="free"]').click();
+            cy.get('#admin-x-settings-scroller > div > div:nth-child(1) > div > div:nth-child(1) > div.flex.items-start.justify-between.gap-4 > div:nth-child(2) > div > button').click();
             cy.log(`Scenario ${index + 1}: ${scenario.description}`);
-            cy.get('input[placeholder="Free').clear();
+            cy.get('input[placeholder="Site title"]').clear();
 
             // Type the data
-            cy.get('input[placeholder="Free').type(scenario.data);
+            cy.get('input[placeholder="Site title"]').type(scenario.data);
 
             // Save the settings
-            cy.contains('button', 'Save')
-            .should('be.visible') 
-            .click();       
-            cy.contains('button', 'Close')
-            .should('be.visible') 
-            .click();        
+            cy.get('#admin-x-settings-scroller button.cursor-pointer.bg-green').click();
 
-
-            
             // Validate the result
             if (scenario.valid) {
-                cy.wait(4000);
-                cy.get('div.text-\\[1\\.65rem\\]')
-                .should('have.text', scenario.data);
-
+                cy.get('div.flex.items-center.mt-1')
+                .first()
+                .should('contain.text', scenario.data);
             } else {
                 console.log('no se evidencia error o aivso');
                 takeScreenshot();

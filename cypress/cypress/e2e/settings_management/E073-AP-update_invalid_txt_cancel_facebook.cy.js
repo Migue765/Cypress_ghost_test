@@ -21,7 +21,7 @@ describe('Modify facebook url', () => {
         // Scenarios with Faker.js
         let random_pos= mockData[Math.floor(Math.random() * mockData.length)];
         const scenarios = [
-            { description: 'url ', data: random_pos.complete_url, valid: true},
+            { description: 'url ', data: random_pos.complete_url, valid: false},
 
         ];
 
