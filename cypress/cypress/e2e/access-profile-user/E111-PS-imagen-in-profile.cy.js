@@ -15,7 +15,7 @@ describe('Access profile: View update image profile', () => {
     it('Should view image in profile', () => {
 
 
-        cy.request('GET', APIREST).then((response) => {
+        cy.request('GET', APIREST + '?schema=EditProfile').then((response) => {
        
             expect(response.status).to.eq(200);
 

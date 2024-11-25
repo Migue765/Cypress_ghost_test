@@ -16,7 +16,7 @@ describe('Access profile: View error in invalid x profile', () => {
   it('Should error in invalid x profile', () => {
       
 
-      cy.request('GET', APIREST).then((response) => {
+      cy.request('GET', APIREST + '?schema=EditProfile').then((response) => {
 
           expect(response.status).to.eq(200);
 

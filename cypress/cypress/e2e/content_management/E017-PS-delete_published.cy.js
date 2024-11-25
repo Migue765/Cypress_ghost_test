@@ -24,44 +24,48 @@ describe('Content Management: Create and Verify Post', () => {
     });
 
     it('Create a new post and verify it appears in the list of posts', () => {
+        cy.request('GET', APIREST + '?schema=page').then((response) => {
 
-        cy.visit(LOCAL_HOST + "#/dashboard");
-        cy.wait(2000);
+            expect(response.status).to.eq(200);
 
-        cy.get('[data-test-nav-custom="posts-Published"]').click();
-        cy.url().should('include', '/ghost/#/posts');
+            cy.visit(LOCAL_HOST + "#/dashboard");
+            cy.wait(2000);
 
-        cy.get('[data-test-new-post-button]').click();
-        cy.wait(2000);
-        cy.url().should('include', '/ghost/#/editor/post');
+            cy.get('[data-test-nav-custom="posts-Published"]').click();
+            cy.url().should('include', '/ghost/#/posts');
 
-        cy.get('.gh-editor-title', { timeout: 10000 }).should('be.visible');
+            cy.get('[data-test-new-post-button]').click();
+            cy.wait(2000);
+            cy.url().should('include', '/ghost/#/editor/post');
 
-        let radom_pos = mockData[Math.floor(Math.random() * mockData.length)];
-        let titleFake = radom_pos.titulo;
-        let contentFake = radom_pos.contenido;
-        cy.get('.gh-editor-title').type(titleFake);
-        cy.get('[data-secondary-instance="false"]').type(contentFake);
+            cy.get('.gh-editor-title', { timeout: 10000 }).should('be.visible');
 
-        cy.get('[data-test-button="publish-flow"]').first().click();
-        cy.get('[data-test-button="continue"]').click();
-        cy.get('[data-test-button="confirm-publish"]').click();
+            let radom_data = response.body[Math.floor(Math.random() * response.body.length)];
+            let titleFake = radom_data.titulo;
+            let contentFake = radom_data.contenido;
+            cy.get('.gh-editor-title').type(titleFake);
+            cy.get('[data-secondary-instance="false"]').type(contentFake);
 
-        cy.get('[data-test-button="close-publish-flow"]').click();
+            cy.get('[data-test-button="publish-flow"]').first().click();
+            cy.get('[data-test-button="continue"]').click();
+            cy.get('[data-test-button="confirm-publish"]').click();
 
-        cy.url().should('include', '/ghost/#/posts');
+            cy.get('[data-test-button="close-publish-flow"]').click();
 
-        cy.get('div.posts-list.gh-list.feature-memberAttribution')
-            .should('contain', titleFake);
+            cy.url().should('include', '/ghost/#/posts');
 
-        cy.get(".view-container.content-list").find('.gh-list-row.gh-posts-list-item.gh-post-list-plain-status')
-            .each((el, index) => {
-                cy.get(`.gh-list-row.gh-posts-list-item.gh-post-list-plain-status`).first().click();
-                cy.get('[data-test-psm-trigger]').click();
-                cy.get('[data-test-button="delete-post"]').click();
-                cy.get('[data-test-button="delete-post-confirm"]').click();
-            });
+            cy.get('div.posts-list.gh-list.feature-memberAttribution')
+                .should('contain', titleFake);
 
-        cy.get('section.gh-canvas.gh-canvas-sticky').find('.view-container.content-list').should('not.contain', titleFake);
+            cy.get(".view-container.content-list").find('.gh-list-row.gh-posts-list-item.gh-post-list-plain-status')
+                .each((el, index) => {
+                    cy.get(`.gh-list-row.gh-posts-list-item.gh-post-list-plain-status`).first().click();
+                    cy.get('[data-test-psm-trigger]').click();
+                    cy.get('[data-test-button="delete-post"]').click();
+                    cy.get('[data-test-button="delete-post-confirm"]').click();
+                });
+
+            cy.get('section.gh-canvas.gh-canvas-sticky').find('.view-container.content-list').should('not.contain', titleFake);
+        });
     });
 });
