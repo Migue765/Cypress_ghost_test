@@ -42,8 +42,15 @@ describe('Content Management: Create and Verify Page', () => {
         cy.get('div.posts-list.gh-list.feature-memberAttribution')
             .should('contain', titleFake);
 
-        let result = cy.get(".view-container.content-list").get('.gh-list-row.gh-posts-list-item.gh-post-list-plain-status')
-
+        //Delete pages
+        cy.get('.gh-list-row.gh-posts-list-item.gh-post-list-plain-status').each(
+            ($el, index, $list) => {
+                cy.get('div.posts-list.gh-list.feature-memberAttribution').first().click();
+                cy.get('[data-test-psm-trigger]').click();
+                cy.get('[data-test-button="delete-post"]').click();
+                cy.get('[data-test-button="delete-post-confirm"]').click();
+            }
+        )
         cy.url().should('include', '/ghost/#/pages');
     });
 });
