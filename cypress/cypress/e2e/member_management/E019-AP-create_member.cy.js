@@ -1,4 +1,4 @@
-const { faker } = require("@faker-js/faker");
+const mockData = require('./ap_mock_member.json');
 
 describe('Member Management: Add and Verify Member', () => {
 
@@ -35,10 +35,11 @@ describe('Member Management: Add and Verify Member', () => {
         cy.wait(2000);
         cy.url().should('include', '/ghost/#/members/new');
 
-        let name = faker.name.findName();
-        let email = faker.internet.email();
-        let note = faker.lorem.sentence();
-        let label = faker.animal.cat();
+        let radom_pos = mockData[Math.floor(Math.random() * mockData.length)];
+        let name = radom_pos.name
+        let email = radom_pos.email
+        let note = radom_pos.note
+        let label = radom_pos.label
         cy.get('[data-test-input="member-name"]').type(name);
         cy.get('[data-test-input="member-email"]').type(email);
         cy.get('.ember-power-select-trigger-multiple-input').type(label);
