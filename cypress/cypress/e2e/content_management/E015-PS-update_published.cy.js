@@ -1,4 +1,6 @@
-const mockData = require('./ps_mock_page.json');
+const LOCAL_HOST = Cypress.env('LOCAL_HOST');
+const APIREST = Cypress.env('APIREST');
+
 
 describe('Content Management: Create and Verify Post', () => {
 
