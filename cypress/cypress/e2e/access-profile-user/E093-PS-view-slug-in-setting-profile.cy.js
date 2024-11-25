@@ -14,14 +14,14 @@ describe('Access profile: slug in setting profile', () => {
 
     it('Should slug in setting profile', () => {
 
-        cy.request('GET', APIREST).then((response) => {
+        cy.request('GET', APIREST + '?schema=EditProfile').then((response) => {
 
             expect(response.status).to.eq(200);
 
 
             let radom_data = response.body[Math.floor(Math.random() * response.body.length)];
-            
- 
+
+
             const name = radom_data.fullname;
             const location = radom_data.Location;
             const website = radom_data.Website;
